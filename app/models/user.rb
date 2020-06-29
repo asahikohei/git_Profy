@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
+  has_one_attached :image
   attr_accessor :group_key
   belongs_to :group
   
@@ -25,6 +26,10 @@ class User < ApplicationRecord
     else
       false
     end
+  end
+  
+  def full_profile?
+    image.attached? && family_name? && first_name? && family_name_kana? && first_name_kana? && sex? && birth_day? && hobby?
   end
 
   private
