@@ -36,4 +36,12 @@ class User < ApplicationRecord
     group = Group.where(key: group_key).first_or_create
     self.group_id = group.id
   end
+  
+  def name
+    "#{family_name} #{first_name}"
+  end
+
+  def name_kana
+    "#{family_name_kana} #{first_name_kana}"
+  end
 end
