@@ -28,6 +28,14 @@ class User < ApplicationRecord
     end
   end
   
+  def name
+    "#{family_name} #{first_name}"
+  end
+
+  def name_kana
+    "#{family_name_kana} #{first_name_kana}"
+  end
+  
   def full_profile?
     image.attached? && family_name? && first_name? && family_name_kana? && first_name_kana? && sex? && birth_day? && hobby?
   end
@@ -42,11 +50,4 @@ class User < ApplicationRecord
     self.group_id = group.id
   end
   
-  def name
-    "#{family_name} #{first_name}"
-  end
-
-  def name_kana
-    "#{family_name_kana} #{first_name_kana}"
-  end
 end
