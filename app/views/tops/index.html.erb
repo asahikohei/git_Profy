@@ -5,10 +5,17 @@
     <%= link_to "プロフィールを登録する", edit_user_path(current_user), { class: "btn btn-lg btn-primary withripple" } %>
   </header>
 <% else %>
-  <%= form_for(@question) do |f| %>
-    <%= link_to current_user.name, user_path(current_user.id), method: :get %>
-    <%= f.label :"質問を投稿してね！" %>
-    <%= f.text_field :text, placeholder: "例：好きな食べ物は？" %>
-    <%= f.submit "質問する" %>
-  <% end %>
+  <div class="posting_form top_controller">
+    <header class="posting_header">
+      <div class="posting_image icon_image" style="background-image: url(<%= rails_blob_path(current_user.image) %>);"></div>
+      <div class="posting_user_info user_info">
+        <%= link_to current_user.name, user_path(current_user.id), method: :get %>
+      </div>
+    </header>
+    <%= form_for(@question) do |f| %>
+      <%= f.label :"質問を投稿してね！" %>
+      <%= f.text_field :text, placeholder: "例：好きな食べ物は？" %>
+      <%= f.submit "質問する" %>
+    <% end %>
+  </div>
 <% end %>
