@@ -5,5 +5,10 @@
     <%= link_to "プロフィールを登録する", edit_user_path(current_user), { class: "btn btn-lg btn-primary withripple" } %>
   </header>
 <% else %>
-
+  <%= form_for(@question) do |f| %>
+    <%= link_to current_user.name, user_path(current_user.id), method: :get %>
+    <%= f.label :"質問を投稿してね！" %>
+    <%= f.text_field :text, placeholder: "例：好きな食べ物は？" %>
+    <%= f.submit "質問する" %>
+  <% end %>
 <% end %>
