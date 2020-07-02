@@ -12,7 +12,7 @@
     </div>
     <% if @answers.exists? %>
       <h3><span>A</span>この質問への回答</h3>
-      <%= render partial: "question/answer", collection: @answers %>
+      <%= render partial: "questions/answer", collection: @answers %>
     <% end %>
   </div>
 </div>

@@ -8,8 +8,7 @@ class AnswersController < ApplicationController
   end
   
   def create
-    Answer.create(answer_params)
-    redirect_to :root and return
+    @answer = Answer.create(answer_params)
   end
   
   private
