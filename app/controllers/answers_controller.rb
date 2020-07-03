@@ -13,6 +13,7 @@ class AnswersController < ApplicationController
   
   def edit
     @answer = Answer.find(params[:id])
+    @question = @answer.question
   end
   
   def update
